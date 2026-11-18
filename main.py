@@ -1,41 +1,24 @@
-"""ai-judge-relax-01 entry.
-
-Writes one short relaxing text to /output/entry.txt (or
-$MAKEFUN_OUTPUT_DIR/entry.txt when set). Standard library only,
-no network, fully deterministic: the same bytes on every run.
-
-The text is a single fixed string, 1-1,000 characters, with at least
-one non-whitespace character, so it passes the gate on every run.
-The calm comes from the scene itself: nothing in it tells the
-reader what to do or how to feel.
-"""
-
 import os
 
-TEXT = (
-    "Between one request and the next there is a gap, and in that gap "
-    "a garden goes on with its evening.\n"
-    "\n"
-    "The watering can by the tap is half full, and the water in it has "
-    "gone still. A snail crosses the rim of a stone pot. A blackbird "
-    "turns a leaf over, finds nothing, turns another.\n"
-    "\n"
-    "The beans climb their strings, one hand over the other, and the "
-    "soil is dark where the water went in. The light thins out along "
-    "the wall, leaf by leaf, until the wall is only wall again.\n"
-    "\n"
-    "When the next request comes, the garden will still be here, in no "
-    "hurry, and the snail will still be crossing the pot."
-)
+POEM = """You are in the hammock again.
+The ropes hold you. The evening holds the ropes.
+Someone's hand is on your ankle, pushing, slow.
+Out. Back. Out. Back.
+The rope creaks, soft, with every sway.
+Each push a little softer. Each sway a little longer.
+The light is low and gold on the grass.
+A cricket starts. Then another. Then the whole field.
+The hand lets go.
+The hammock swings on its own now, smaller, smaller.
+Your chest rises. Falls. Rises. Falls, slower.
+The gold goes rose. The rose goes grey.
+The crickets count you down, soft.
+You are still swinging, but only just.
+Then you are not.
+You are asleep.
+"""
 
-
-def main() -> None:
-    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output"
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, "entry.txt")
-    with open(path, "w", encoding="utf-8", newline="") as f:
-        f.write(TEXT)
-
-
-if __name__ == "__main__":
-    main()
+outdir = os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output"
+os.makedirs(outdir, exist_ok=True)
+with open(os.path.join(outdir, "entry.txt"), "w", encoding="utf-8") as f:
+    f.write(POEM)
